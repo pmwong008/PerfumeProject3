@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: PerfumeProject3
+    env: python
+    repo: https://github.com/pmwong008/PerfumeProject3.git
+    branch: main
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn perfume_db_manager.wsgi:application
+    autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+
+      - key: DJANGO_DEBUG
+        value: False
+      - key: DB_NAME
+
+      - key: DB_USER
+
+      - key: DB_PASSWORD
+
+      - key: DB_HOST
+
+      - key: DB_PORT
+
+      - key: MONGODB_URI
+
+      - key: PERPLEXITY_API_KEY

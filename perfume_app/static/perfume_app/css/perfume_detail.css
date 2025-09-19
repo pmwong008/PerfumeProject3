@@ -1,0 +1,22 @@
+.perfume-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #555;
+    letter-spacing: 1px;
+  }
+  .perfume-name {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #222;
+  }
+
+#submit-btn{
+    margin-top:30px;
+    width:50%;
+}

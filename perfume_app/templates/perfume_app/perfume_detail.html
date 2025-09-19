@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_style %}
+<link rel="stylesheet" href="{% static 'school_admin/css/perfumes.css'%}">
+{% endblock %}
+{% block title %}Perfume Detail{% endblock %}
+{% block body_content %}
+<div class="container py-4">
+
+  <div class="row mb-4 align-items-start">
+    <!-- Image -->
+    <div class="col-md-6 text-center perfume-image mb-3 mb-md-0">
+      <img src="https://fimgs.net/mdimg/perfume-thumbs/375x500{{ perfume.image }}"
+           alt="{{ perfume.name }}"
+           class="img-fluid rounded shadow-sm"
+           style="max-width: 375px; height: 500px; object-fit: cover;">
+    </div>
+
+    <!-- Info -->
+    <div class="col-md-6 perfume-details">
+      <h5 class="text-secondary fw-semibold">{{ perfume.brand }}</h5>
+      <h2 class="fw-bold mb-4">{{ perfume.name }}</h2>
+
+       <h5 class="fw-semibold">Accords :</h5>
+        <ul class="list-group list-group-flush">
+            {% if is_list %}
+              {% for accord in perfume.main_accords %}
+              <li class="list-group-item p-1 ps-0">{{ accord }}</li>
+              {% endfor %}
+            {% endif %}
+        </ul>
+        <a href="{% url 'ai_app:confirm' %}?perfume_id={{ perfume.pk }}" class="btn btn-primary">Get sample</a>
+
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="row mb-4">
+    <div class="col-12 perfume-notes">
+      {% if is_dict %}
+        <h6 class="fw-semibold">Top Notes:</h6>
+        <ul class="mb-3 list-group list-group-flush">
+          {% for item in perfume.notes.top %}
+            <li class="list-group-item p-1 ps-0">{{ item }}</li>
+          {% endfor %}
+        </ul>
+
+        <h6 class="fw-semibold">Middle Notes:</h6>
+        <ul class="mb-3 list-group list-group-flush">
+          {% for item in perfume.notes.middle %}
+            <li class="list-group-item p-1 ps-0">{{ item }}</li>
+          {% endfor %}
+        </ul>
+
+        <h6 class="fw-semibold">Base Notes:</h6>
+        <ul class="mb-3 list-group list-group-flush">
+          {% for item in perfume.notes.base %}
+            <li class="list-group-item p-1 ps-0">{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <h5 class="fw-semibold">Notes:</h5>
+        <ul class="list-group list-group-flush">
+          {% for item in perfume.notes %}
+            <li class="list-group-item p-1 ps-0">{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block body_script %}
+{% endblock %}
