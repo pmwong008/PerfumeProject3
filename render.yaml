@@ -5,7 +5,7 @@ services:
     repo: https://github.com/pmwong008/PerfumeProject3.git
     branch: main
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
-    startCommand: gunicorn perfume_db_manager.wsgi:application
+    startCommand: gunicorn PerfumeProject3.git.wsgi:application
     autoDeploy: true
     envVars:
       - key: SECRET_KEY
